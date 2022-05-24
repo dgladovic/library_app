@@ -26,7 +26,7 @@ function addBookToLibrary(){
   let broj = document.querySelector('#pages');
   let citanje = document.querySelector('input[name="read"]:checked');
 
-    let djokic = new Book(naslov.value,autor.value,broj.value,citanje.value);
+  let djokic = new Book(naslov.value,autor.value,broj.value,citanje.value);
   
   toggle.style.display = 'none';
   toggle.style.visibility = 'hidden';
@@ -85,6 +85,7 @@ function dodaj(){
 
     toggle.style.display = 'block';
     toggle.style.visibility = 'visible';
+
 
 }
 
