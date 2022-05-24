@@ -1,3 +1,25 @@
-*{
+/* *{
     border: 1px solid red;
+} */
+
+.user_input{
+    display: none;
+    visibility: hidden;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 300px;
+    height: 120px;
+    padding: 5px;
+}
+
+.formfield{
+    display: flex;
+    margin: 3px;
+    width: 280px;
+    justify-content: space-between;
+}
+
+#dodaj{
+    width: 280px;
+    margin-left: 3px;
 }

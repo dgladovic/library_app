@@ -10,6 +10,7 @@ let myLibrary = [
 ];
 
 const tijelo = document.querySelector('body');
+const toggle = document.querySelector('.user_input');
 
 function Book(title,author,pages,read){
     this.title = title;
@@ -24,9 +25,11 @@ function addBookToLibrary(){
   let autor = document.querySelector('#author');
   let broj = document.querySelector('#pages');
   let citanje = document.querySelector('input[name="read"]:checked');
-  let djokic = new Book(naslov.value,autor.value,broj.value,citanje.value);
 
-  console.log(myLibrary);
+    let djokic = new Book(naslov.value,autor.value,broj.value,citanje.value);
+  
+  toggle.style.display = 'none';
+  toggle.style.visibility = 'hidden';
   return myLibrary.push(djokic);
 
     
@@ -74,6 +77,14 @@ function carousell(){
             kartica.appendChild(tekst);
         }
         tijelo.appendChild(kartica);
+        
     })
+}
+
+function dodaj(){
+
+    toggle.style.display = 'block';
+    toggle.style.visibility = 'visible';
+
 }
 
