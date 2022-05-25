@@ -26,9 +26,8 @@ function addBookToLibrary(){
   
   toggle.style.display = 'none';
   toggle.style.visibility = 'hidden';
+  myLibrary.push(djokic);
   carousell();
-  return myLibrary.push(djokic);
-
     
 }
 
@@ -39,11 +38,27 @@ function carousell(){
         }else{
             const kartica = document.createElement('div');
             kartica.classList.add(`card-${ind}`);
-            kartica.setAttribute('data',ind);
+            kartica.setAttribute('id','rokaj');
             kartica.style.width = '350px';
+            
+            const tgllab = document.createElement('label');
+            const tgl_btn = document.createElement('input');
+            const tgl_text = document.createElement('span');
+
+            tgllab.setAttribute('class','switch');
+            tgl_btn.setAttribute('type','checkbox');
+            tgl_text.setAttribute('class','slider round');
+
+            tgllab.appendChild(tgl_btn);
+            tgllab.appendChild(tgl_text);
+            
+            
             for (key in book){
                 const small_field = document.createElement('div');
                 const title = document.createElement('p');
+
+                small_field.style.height = '30px';
+                
                 title.style.width = '60px';
                 title.style.display = "inline-block"
 
@@ -59,25 +74,30 @@ function carousell(){
                     case 'title': 
                         title.textContent = "Title: ";
                         tekst.textContent = book[key];
+                        small_field.appendChild(title);
+                    small_field.appendChild(tekst);
+                        small_field.appendChild(tgllab);
                         break;
                     case 'author':
                         title.textContent = "Author: ";
                         tekst.textContent = book[key];
+                        small_field.appendChild(title);
+                        small_field.appendChild(tekst);
                         break;
                     case 'pages':
                         title.textContent = "Pages: ";
                         tekst.textContent = book[key];
+                        small_field.appendChild(title);
+                        small_field.appendChild(tekst);
                         break;
                     case 'read':
                         title.textContent = "Status: ";
                         tekst.textContent = book[key];
+                        small_field.appendChild(title);
+                        small_field.appendChild(tekst);
                         break;
                 }
-
-                small_field.appendChild(title);
-                small_field.appendChild(tekst);
                 kartica.appendChild(small_field);
-                
             }
             const rmv_button = document.createElement('button');
             rmv_button.type = 'button';
@@ -85,8 +105,11 @@ function carousell(){
                 myLibrary.splice(ind);
                 kartica.remove();
             }
+            rmv_button.textContent = 'Remove';
             rmv_button.style.width = '280px';
             rmv_button.style.height = '30px';
+
+            
 
             kartica.appendChild(rmv_button);
             tijelo.appendChild(kartica);
@@ -97,6 +120,5 @@ function carousell(){
 function dodaj(){
     toggle.style.display = 'block';
     toggle.style.visibility = 'visible';
-    
 }
 
