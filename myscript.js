@@ -26,6 +26,7 @@ function addBookToLibrary(){
   
   toggle.style.display = 'none';
   toggle.style.visibility = 'hidden';
+  carousell();
   return myLibrary.push(djokic);
 
     
@@ -82,6 +83,7 @@ function carousell(){
             rmv_button.type = 'button';
             rmv_button.onclick = function(){
                 myLibrary.splice(ind);
+                kartica.remove();
             }
             rmv_button.style.width = '280px';
             rmv_button.style.height = '30px';
@@ -95,5 +97,6 @@ function carousell(){
 function dodaj(){
     toggle.style.display = 'block';
     toggle.style.visibility = 'visible';
+    
 }
 
