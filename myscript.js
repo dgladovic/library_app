@@ -39,8 +39,11 @@ function carousell(){
             const kartica = document.createElement('div');
             kartica.classList.add(`card-${ind}`);
             kartica.setAttribute('id','rokaj');
-            kartica.style.width = '350px';
             
+            const switchfield = document.createElement('div');
+            switchfield.classList.add("togel");
+            switchfield.style.height = '30px';
+
             const tgllab = document.createElement('label');
             const tgl_btn = document.createElement('input');
             const tgl_text = document.createElement('span');
@@ -51,7 +54,9 @@ function carousell(){
 
             tgllab.appendChild(tgl_btn);
             tgllab.appendChild(tgl_text);
-            
+
+            switchfield.appendChild(tgllab);
+            kartica.appendChild(switchfield);
             
             for (key in book){
                 const small_field = document.createElement('div');
@@ -65,6 +70,8 @@ function carousell(){
                 const tekst = document.createElement('p');
                 tekst.style.fontSize = '18px';
                 tekst.style.margin = '2px';
+                tekst.style.width = "210px";
+
                 tekst.style.display = "inline-block"
 
                 title.style.fontSize = '18px';
@@ -74,43 +81,35 @@ function carousell(){
                     case 'title': 
                         title.textContent = "Title: ";
                         tekst.textContent = book[key];
-                        small_field.appendChild(title);
-                    small_field.appendChild(tekst);
-                        small_field.appendChild(tgllab);
                         break;
                     case 'author':
                         title.textContent = "Author: ";
                         tekst.textContent = book[key];
-                        small_field.appendChild(title);
-                        small_field.appendChild(tekst);
                         break;
                     case 'pages':
                         title.textContent = "Pages: ";
                         tekst.textContent = book[key];
-                        small_field.appendChild(title);
-                        small_field.appendChild(tekst);
                         break;
                     case 'read':
                         title.textContent = "Status: ";
                         tekst.textContent = book[key];
-                        small_field.appendChild(title);
-                        small_field.appendChild(tekst);
+                        
                         break;
                 }
+                small_field.appendChild(title);
+                small_field.appendChild(tekst);
+                
                 kartica.appendChild(small_field);
             }
             const rmv_button = document.createElement('button');
+            rmv_button.setAttribute('id','brisime');
             rmv_button.type = 'button';
             rmv_button.onclick = function(){
                 myLibrary.splice(ind);
                 kartica.remove();
             }
             rmv_button.textContent = 'Remove';
-            rmv_button.style.width = '280px';
-            rmv_button.style.height = '30px';
-
-            
-
+    
             kartica.appendChild(rmv_button);
             tijelo.appendChild(kartica);
         }
