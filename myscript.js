@@ -15,6 +15,15 @@ function Book(title,author,pages,read){
     this.read = read;
 }
 
+Book.prototype.changer = function(){
+    if(this.read == true){
+        this.read = false;
+    }
+    else{
+        this.read = true;
+    }
+}
+
 function addBookToLibrary(){
 
   let naslov = document.querySelector('#title');
@@ -93,13 +102,14 @@ function carousell(){
                     case 'read':
                         title.textContent = "Status: ";
                         tekst.textContent = book[key];
-                        
                         break;
                 }
                 small_field.appendChild(title);
                 small_field.appendChild(tekst);
-                
                 kartica.appendChild(small_field);
+                if(key == 'changer'){
+                    small_field.remove();
+                }
             }
             const rmv_button = document.createElement('button');
             rmv_button.setAttribute('id','brisime');
@@ -114,7 +124,14 @@ function carousell(){
             tijelo.appendChild(kartica);
         }
     })
+
 }
+
+const muljanje = document.querySelectorAll('.switch')
+    muljanje.forEach( (prek) =>{
+        prek.addEventListener('click',console.log(prek));
+        }
+    );
 
 function dodaj(){
     toggle.style.display = 'block';
