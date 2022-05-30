@@ -16,17 +16,6 @@ function Book(title,author,pages,read){
     this.read = read;
 };
 
-Book.prototype.changer = function(){
-    if(this.read == "Procitano"){
-        this.read = "Neprocitano";
-        console.log(this.read);
-    }
-    else{
-        this.read = "Procitano";
-        console.log(this.read);
-    }
-};
-
 function addBookToLibrary(){
 
   let naslov = document.querySelector('#title');
@@ -141,11 +130,31 @@ function carousell(){
 };
 
 function probaj(ind) {
-    myLibrary[ind].read ? myLibrary[ind].read = false : myLibrary[ind].read = true
+
+    if (myLibrary[ind].read == "Procitano"){
+        myLibrary[ind].read = "Neprocitano";
+    }else{
+        myLibrary[ind].read = "Procitano";
+    }
+
+    let cejndz = document.querySelector(`.card-${ind} :nth-child(5) > p ~ p` );
+    let cejndz2 = document.querySelector(`.card-${ind} :nth-child(5)` );
+
+    cejndz.remove();
+
+    const tekst = document.createElement('p');
+                tekst.style.fontSize = '18px';
+                tekst.style.margin = '2px';
+                tekst.style.width = "210px";
+
+                tekst.style.display = "inline-block"
+
+                title.style.fontSize = '18px';
+                title.style.margin = '2px';
+                tekst.textContent = myLibrary[ind].read;
     
-
-
-    console.log(myLibrary[ind]);
+    cejndz2.appendChild(tekst);
+    console.log(myLibrary[ind],cejndz);
     
 }
 

@@ -10,7 +10,8 @@ body{
 
 #rokaj{
     display: flexbox;
-    background-color: gray;
+    background: rgb(255,255,255);
+background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(130,198,184,1) 24%, rgba(112,180,155,1) 62%, rgba(71,139,87,1) 90%);
     margin: 10px;
     padding: 15px;
     width: 300px;
