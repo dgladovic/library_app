@@ -8,37 +8,48 @@ let myLibrary = [
 const tijelo = document.querySelector('body');
 const toggle = document.querySelector('.user_input');
 
+
 function Book(title,author,pages,read){
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
-}
+};
 
 Book.prototype.changer = function(){
-    if(this.read == true){
-        this.read = false;
+    if(this.read == "Procitano"){
+        this.read = "Neprocitano";
+        console.log(this.read);
     }
     else{
-        this.read = true;
+        this.read = "Procitano";
+        console.log(this.read);
     }
-}
+};
 
 function addBookToLibrary(){
 
   let naslov = document.querySelector('#title');
   let autor = document.querySelector('#author');
   let broj = document.querySelector('#pages');
-  let citanje = document.querySelector('input[name="read"]:checked');
+  let citanje = document.querySelector('input[name="read"]');
+  let citajme = "dap";
+  if(citanje.checked == true){
+    citajme = 'Procitano';
+  };
+  if(citanje.checked == false){
+      citajme = "Neprocitano";
+  }
 
-  let djokic = new Book(naslov.value,autor.value,broj.value,citanje.value);
+  let djokic = new Book(naslov.value,autor.value,broj.value,citajme);
   
   toggle.style.display = 'none';
   toggle.style.visibility = 'hidden';
   myLibrary.push(djokic);
+
   carousell();
     
-}
+};
 
 function carousell(){
     myLibrary.forEach( (book,ind) => {
@@ -58,7 +69,10 @@ function carousell(){
             const tgl_text = document.createElement('span');
 
             tgllab.setAttribute('class','switch');
+            tgllab.setAttribute('id',`carr-${ind}`);
             tgl_btn.setAttribute('type','checkbox');
+            tgl_btn.setAttribute('onclick',`probaj(${ind})`);
+            tgl_btn.setAttribute('name','read');
             tgl_text.setAttribute('class','slider round');
 
             tgllab.appendChild(tgl_btn);
@@ -124,17 +138,30 @@ function carousell(){
             tijelo.appendChild(kartica);
         }
     })
+};
 
+function probaj(ind) {
+    myLibrary[ind].read ? myLibrary[ind].read = false : myLibrary[ind].read = true
+    
+
+
+    console.log(myLibrary[ind]);
+    
 }
 
-const muljanje = document.querySelectorAll('.switch')
-    muljanje.forEach( (prek) =>{
-        prek.addEventListener('click',console.log(prek));
-        }
-    );
+function toggleCheck() {
+    if(document.getElementById("myCheckbox").checked === true){
+      document.getElementById("aLink").style.display = "block";
+    } else {
+      document.getElementById("aLink").style.display = "none";
+    }
+  };
 
 function dodaj(){
     toggle.style.display = 'block';
     toggle.style.visibility = 'visible';
-}
+};
 
+// document.addEventListener('click', (e) => {
+//     console.log(e.target);
+// })
